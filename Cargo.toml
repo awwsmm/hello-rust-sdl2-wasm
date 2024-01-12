@@ -1,0 +1,12 @@
+[package]
+name = "hello-wasm"
+version = "0.1.0"
+edition = "2021"
+
+# this was suggested in one or two tutorials
+#[lib]
+#crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2.89"
+sdl2 = "0.36.0"
