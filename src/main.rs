@@ -5,7 +5,7 @@ use std::rc::Rc;
 use std::thread::sleep;
 use std::time::Duration;
 use sdl2::rect::Rect;
-use hello_wasm::main_loop;
+use hello_rust_sdl2_wasm::main_loop;
 
 // this demo is based on
 // https://puddleofcode.com/story/definitive-guide-to-rust-sdl2-and-emscriptem/
@@ -55,7 +55,7 @@ fn main() {
     // https://doc.rust-lang.org/reference/conditional-compilation.html
     // https://doc.rust-lang.org/nightly/rustc/platform-support.html
     #[cfg(target_family = "wasm")]
-    use hello_wasm::emscripten;
+    use hello_rust_sdl2_wasm::emscripten;
 
     println!("made it here");
 
