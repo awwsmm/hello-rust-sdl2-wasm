@@ -4,7 +4,12 @@ A minimal working "game" written in Rust with SDL2, compiled to WASM.
 
 ![a screen recording of the "game"](https://raw.githubusercontent.com/awwsmm/hello-rust-sdl2-wasm/master/demo.gif)
 
+Note: these instructions are written for macOS. If you'd like to submit instructions for any other OS, please open a PR.
+
 ## Prerequisites
+
+- [`rustup`](https://rustup.rs/) must be installed
+- [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) must be installed
 
 ### install [the SDL2 development libraries](https://github.com/Rust-SDL2/rust-sdl2?tab=readme-ov-file#requirements)
 
@@ -14,17 +19,31 @@ On macOS, this is as easy as
 brew install sdl2
 ```
 
-### install [Rust](https://rustup.rs/)
+Make sure these libraries are on your `LIBRARY_PATH`, as well. If you installed with `brew`, run
 
 ```shell
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 ```
 
-### install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and clone this repo
+So you don't have to do this in each new shell you open, maybe also add this to your `~/.bashrc` or `~/.zshrc` (or other shell startup script).
+
+### clone this repo and `cd` into it
 
 ```shell
-git clone https://github.com/awwsmm/hello-rust-sdl2-wasm.git
+git clone https://github.com/awwsmm/hello-rust-sdl2-wasm.git && cd hello-rust-sdl2-wasm
 ```
+
+## Building locally
+
+To build a desktop (standalone binary executable) app, run
+
+```shell
+cargo run
+```
+
+## Building for WASM
+
+To build the WASM app instead, there are a few more setup steps.
 
 ### install the target architecture toolchain
 
@@ -34,23 +53,21 @@ rustup target add asmjs-unknown-emscripten
 
 We use [emscripten](https://emscripten.org/) to convert Rust LLVM bytecode to WASM.
 
+### install the `emscripten` compiler
+
+```shell
+brew install emscripten
+```
+
+(This will take a few minutes.)
+
 ### set this one environment variable
 
 ```shell
 export EMCC_CFLAGS="-s USE_SDL=2"
 ```
 
-## Building
-
-To build a desktop (standalone binary executable) app, run
-
-```shell
-cargo run
-```
-
-within this repo (in the `hello-rust-sdl2-wasm` directory).
-
-To build the WASM app instead, run
+### build
 
 ```shell
 cargo build --target asmjs-unknown-emscripten
