@@ -39,7 +39,6 @@ fn main() {
 
     let rect = Rect::new(0, 0, 10, 10);
 
-    // see https://stackoverflow.com/a/58599995/2925434
     let ctx = Rc::new(RefCell::new(ctx));
     let rect = Rc::new(RefCell::new(rect));
     let canvas = Rc::new(RefCell::new(canvas));
