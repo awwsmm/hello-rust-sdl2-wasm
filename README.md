@@ -2,6 +2,8 @@
 
 A minimal working "game" written in Rust with SDL2, compiled to WASM.
 
+![a screen recording of the "game"](https://raw.githubusercontent.com/awwsmm/hello-rust-sdl2-wasm/master/demo.gif)
+
 ## Prerequisites
 
 ### install [the SDL2 development libraries](https://github.com/Rust-SDL2/rust-sdl2?tab=readme-ov-file#requirements)
