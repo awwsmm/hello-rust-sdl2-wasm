@@ -4,7 +4,7 @@ A minimal working "game" written in Rust with SDL2, compiled to WASM.
 
 ![a screen recording of the "game"](https://raw.githubusercontent.com/awwsmm/hello-rust-sdl2-wasm/master/demo.gif)
 
-Note: these instructions are written for macOS. If you'd like to submit instructions for any other OS, please open a PR.
+Note: these instructions are written for macOS and Ubuntu. If you'd like to submit instructions for any other OS, please open a PR.
 
 ## Prerequisites
 
@@ -26,6 +26,13 @@ export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 ```
 
 So you don't have to do this in each new shell you open, maybe also add this to your `~/.bashrc` or `~/.zshrc` (or other shell startup script).
+
+On Ubuntu:
+
+```shell
+sudo apt install libsdl2-dev
+```
+(setting `LIBRARY_PATH` is not needed on Ubuntu)
 
 ### clone this repo and `cd` into it
 
@@ -55,11 +62,22 @@ We use [emscripten](https://emscripten.org/) to convert Rust LLVM bytecode to WA
 
 ### install the `emscripten` compiler
 
+On MacOS:
+
 ```shell
 brew install emscripten
 ```
 
 (This will take a few minutes.)
+
+On Ubuntu, follow emscripten's [recommended installation instructions](https://emscripten.org/docs/getting_started/downloads.html):
+
+```shell
+git clone https://github.com/emscripten-core/emsdk.git && cd emsdk
+./emsdk install latest
+./emsdk activate latest
+source ./emsdk_env.sh
+```
 
 ### set this one environment variable
 
